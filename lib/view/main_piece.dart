@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:enspd_news/auth/authentification.dart';
+import 'package:enspd_news/services/firestore.dart';
+// import 'package:pie_chart/pie_chart.dart';
+// import 'package:enspd_news/model/model.dart';
+
+class MainPiece extends StatefulWidget {
+  const MainPiece({super.key});
+
+  @override
+  State<MainPiece> createState() => _MainPieceState();
+}
+
+class _MainPieceState extends State<MainPiece> {
+  @override
+  Widget build(BuildContext context) {
+    final auth = Auth();
+    final width = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context).textTheme;
+    final height = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: height * 0.07,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: width * 0.1,
+              ),
+              RichText(
+                text: TextSpan(
+                  text: 'Hello, ',
+                  style: TextStyle(
+                    fontSize: theme.headlineSmall!.fontSize,
+                    color: theme.headlineSmall!.color,
+                    fontWeight: theme.headlineSmall!.fontWeight,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: Firestore.userName ?? auth.firstNameAuth(),
+                      style: TextStyle(
+                        fontSize: theme.headlineSmall!.fontSize,
+                        color: theme.headlineSmall!.color,
+                        fontWeight: Theme.of(context)
+                            .textTheme
+                            .headlineSmall!
+                            .fontWeight,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+              Image.asset(
+                'assets/fougere.png',
+                width: width / 7,
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
