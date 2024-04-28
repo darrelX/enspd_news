@@ -4,7 +4,7 @@ import 'package:enspd_news/model/camera_manager.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:enspd_news/model/model.dart';
-import 'package:enspd_news/view/home_page.dart';
+import 'package:enspd_news/view/home/home_page.dart';
 import 'package:enspd_news/widgets/gallery.dart';
 
 /// CameraApp is the Main Application.

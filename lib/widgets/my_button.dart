@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:enspd_news/auth/authentification.dart';
 import 'package:enspd_news/services/firestore.dart';
-import 'package:enspd_news/view/home_page.dart';
+import 'package:enspd_news/view/home/home_page.dart';
 import 'package:enspd_news/widgets/snackbar_utils.dart';
 
 class MyButton extends StatelessWidget {

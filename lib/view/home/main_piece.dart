@@ -20,6 +20,7 @@ class _MainPieceState extends State<MainPiece> {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +35,7 @@ class _MainPieceState extends State<MainPiece> {
               ),
               RichText(
                 text: TextSpan(
-                  text: 'Hello, ',
+                  text: 'Hello ',
                   style: TextStyle(
                     fontSize: theme.headlineSmall!.fontSize,
                     color: theme.headlineSmall!.color,
@@ -42,7 +43,8 @@ class _MainPieceState extends State<MainPiece> {
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: Firestore.userName ?? auth.firstNameAuth(),
+                      text: Auth.currentUser!.displayName!.split(' ')[0] ??
+                          auth.firstNameAuth(),
                       style: TextStyle(
                         fontSize: theme.headlineSmall!.fontSize,
                         color: theme.headlineSmall!.color,
@@ -56,12 +58,13 @@ class _MainPieceState extends State<MainPiece> {
                 ),
               ),
               const SizedBox(width: 10),
-              Image.asset(
-                'assets/fougere.png',
-                width: width / 7,
-              )
             ],
           ),
+          Container(
+            child: Column(
+              children: [Image.asset('assets/img-3.png')],
+            ),
+          )
         ],
       ),
     );

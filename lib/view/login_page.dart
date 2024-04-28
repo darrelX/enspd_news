@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:enspd_news/auth/authentification.dart';
 import 'package:enspd_news/services/firestore.dart';
-import 'package:enspd_news/view/home_page.dart';
+import 'package:enspd_news/view/home/home_page.dart';
 import 'package:enspd_news/view/register_screen.dart';
 import 'package:enspd_news/view/reset_password_pae.dart';
 import 'package:enspd_news/widgets/my_button.dart';

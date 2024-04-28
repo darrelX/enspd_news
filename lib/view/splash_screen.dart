@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gif/gif.dart';
 import 'package:enspd_news/auth/authentification.dart';
 import 'package:enspd_news/view/on_boarding_page.dart';
-import 'package:enspd_news/view/home_page.dart';
+import 'package:enspd_news/view/home/home_page.dart';
 // import 'package:enspd_news/view/login_page.dart';
 
 class SplashScreen extends StatefulWidget {

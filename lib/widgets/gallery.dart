@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:enspd_news/model/camera_manager.dart';
-import 'package:enspd_news/view/home_page.dart';
+import 'package:enspd_news/view/home/home_page.dart';
 
 import 'package:enspd_news/model/model.dart';
 

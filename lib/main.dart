@@ -13,7 +13,7 @@ Future<void> main() async {
   CameraManager.cameras = await availableCameras();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ); 
 
   runApp(const MyApp());
 }
