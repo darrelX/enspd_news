@@ -1,6 +1,9 @@
+import 'package:enspd_news/widgets/my_button.dart';
+import 'package:enspd_news/widgets/story_telling.dart';
 import 'package:flutter/material.dart';
 import 'package:enspd_news/view/login_page.dart';
-import 'package:enspd_news/view/register_screen.dart';
+import 'package:enspd_news/view/register_page/register_screen.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -14,8 +17,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  final PageController _controller = PageController();
-  bool _isVisible = false;
+  final PageController _pagecontroller = PageController();
   bool _onLastPage = false;
 
   @override
@@ -25,7 +27,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    _pagecontroller.dispose();
     super.dispose();
   }
 
@@ -36,302 +38,125 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          PageView(
-            controller: _controller,
-            onPageChanged: (index) {
-              setState(() {
-                _onLastPage = (index == 2);
-                _isVisible = (index == 2);
-                // print(_onLastPage);
-              });
-            },
-            children: [
-              Container(
-                color: Colors.white,
-                width: width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        height: 201.4,
-                        decoration: const BoxDecoration(
-                          color: Colors.blueGrey,
-                          shape: BoxShape.circle,
-                        )),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(maxWidth: width * 0.9),
-                      child: const Text(
-                        "Step into a World of Learning Excellence",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(maxWidth: width * 0.9),
-                      child: const Opacity(
-                          opacity: 0.3,
-                          child: Text(
-                            "Lorem ipsum dolor sit amet a aconsectetur. Ut proin accumsan ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(),
-                          )),
-                    ),
-                    SizedBox(height: height * 0.20)
-                  ],
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                width: width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        height: 201.4,
-                        decoration: const BoxDecoration(
-                          color: Colors.blueGrey,
-                          shape: BoxShape.circle,
-                        )),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(maxWidth: width * 0.9),
-                      child: const Text(
-                        "Step into a World of Learning Excellence",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(maxWidth: width * 0.9),
-                      child: const Opacity(
-                          opacity: 0.3,
-                          child: Text(
-                            "Lorem ipsum dolor sit amet a aconsectetur. Ut proin accumsan ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(),
-                          )),
-                    ),
-                    SizedBox(height: height * 0.20)
-                  ],
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                width: width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        height: 201.4,
-                        decoration: const BoxDecoration(
-                          color: Colors.blueGrey,
-                          shape: BoxShape.circle,
-                        )),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(maxWidth: width * 0.9),
-                      child: const Text(
-                        "Step into a World of Learning Excellence",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(maxWidth: width * 0.9),
-                      child: const Opacity(
-                          opacity: 0.3,
-                          child: Text(
-                            "Lorem ipsum dolor sit amet a aconsectetur. Ut proin accumsan ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(),
-                          )),
-                    ),
-                    SizedBox(height: height * 0.20)
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Align(
-            alignment: const FractionalOffset(0.98, 0.05),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Visibility(
-                    visible: _isVisible,
-                    child: GestureDetector(
-                      onTap: () {
-                        _controller.previousPage(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.linear);
-                      },
-                      child: Container(
-                        height: 50,
-                        padding: const EdgeInsets.symmetric(horizontal: 7),
-                        decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: const Center(
-                          child: Text(
-                            "BACK",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
-                      ),
-                    ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+        child: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            PageView(
+              controller: _pagecontroller,
+              onPageChanged: (index) {
+                setState(() {
+                  _onLastPage = (index == 2);
+                });
+              },
+              children: const [
+                StoryTelling(
+                    text1: "step into a world of ",
+                    text2: "learning ",
+                    text3: "exellence",
+                    text4:
+                        "Your dynamic and personalized online learning companion."),
+                StoryTelling(
+                    text1: "empower your ",
+                    text2: "education ",
+                    text3: "journey",
+                    text4:
+                        "Your dynamic and personalized online learning companion."),
+                StoryTelling(
+                    text1: "step into a world of ",
+                    text2: "learning ",
+                    text3: "exellence",
+                    text4:
+                        "Your dynamic and personalized online learning companion."),
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: Visibility(
+                visible: !_onLastPage,
+                child: MyButton(
+                  widget: Text(
+                    "SKIP",
+                    style: TextStyle(fontSize: 15),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      _controller.jumpToPage(2);
-                    },
-                    child: Container(
-                      height: 50,
-                      padding: const EdgeInsets.symmetric(horizontal: 7),
-                      decoration: BoxDecoration(
-                          color: Colors.orange,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Center(
-                        child: Text(
-                          "SKIP",
-                          style: TextStyle(fontSize: 15),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ontap: () => _pagecontroller.jumpToPage(2),
+                  large: width * 0.1,
+                  color: Colors.blue,
+                ),
               ),
             ),
-          ),
-          Align(
-            alignment: const FractionalOffset(0.5, 0.7),
-            child: SmoothPageIndicator(
-                controller: _controller,
-                count: 3,
-                effect: WormEffect(
-                    spacing: 16,
-                    dotColor: Colors.black26,
-                    activeDotColor: Colors.teal.shade700),
-                onDotClicked: (index) => _controller.animateToPage(index,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeIn)),
-          ),
-          Padding(
-            padding: EdgeInsets.all(width * 0.1),
-            child: !_onLastPage
-                ? Align(
-                    alignment: const FractionalOffset(0.5, 0.9),
-                    child: GestureDetector(
-                      onTap: () {
-                        _controller.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeInOut);
-                      },
-                      child: Container(
-                          width: double.infinity,
-                          height: 40,
-                          decoration: const BoxDecoration(
-                              color: Colors.green, border: Border.symmetric()),
-                          child: const Center(
-                              child: Text(
-                            'NEXT',
-                            style: TextStyle(color: Colors.white),
-                          ))),
-                    ),
-                  )
-                : Align(
-                    alignment: const FractionalOffset(0.5, 0.94),
-                    child: SizedBox(
-                      height: 110,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: double.infinity,
-                            height: 40,
-                            child: TextButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.orange),
-                                  shape:
-                                      MaterialStateProperty.all<OutlinedBorder>(
-                                    const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.zero,
-                                    ),
-                                  )),
-                              onPressed: () {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegisterScreen()));
-                              },
-                              child: const Text(
-                                "Register",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          SizedBox(
-                            width: width * 0.9,
-                            height: 40,
-                            child: TextButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.white),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                    BorderSide(color: Colors.orange),
-                                  ),
-                                  shape:
-                                      MaterialStateProperty.all<OutlinedBorder>(
-                                    const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.zero,
-                                    ),
-                                  )),
-                              onPressed: () {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoginScreen()));
-                              },
-                              child: const Text(
-                                "Log in",
-                                style: TextStyle(
-                                  color: Colors.orange,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+            Align(
+              alignment: const FractionalOffset(0.5, 0.7),
+              child: SmoothPageIndicator(
+                  controller: _pagecontroller,
+                  count: 3,
+                  effect: const WormEffect(
+                      spacing: 16,
+                      dotColor: Colors.black26,
+                      activeDotColor: Colors.orange),
+                  onDotClicked: (index) => _pagecontroller.animateToPage(index,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn)),
+            ),
+            !_onLastPage
+                ? Column(
+                    children: [
+                      SizedBox(
+                        height: height * 0.8,
                       ),
-                    ),
-                  ),
-          )
-        ],
+                      MyButton(
+                        widget: const Text(
+                          'NEXT',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        ontap: () => _pagecontroller.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut),
+                        color: Colors.blue,
+                      ),
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: height * 0.76,
+                      ),
+                      MyButton(
+                        widget: const Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        color: Colors.blue,
+                        ontap: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegisterScreen()));
+                        },
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      MyButton(
+                          widget: const Text(
+                            "Login",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          color: Colors.white,
+                          ontap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginScreen()));
+                          }),
+                    ],
+                  )
+          ],
+        ),
       ),
     );
   }

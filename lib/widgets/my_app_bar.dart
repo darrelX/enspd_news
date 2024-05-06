@@ -13,25 +13,22 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       automaticallyImplyLeading: false,
-      title: Container(
-        // margin: const EdgeInsets.only(top: 20),
-        child: Row(
-          children: [
-            Icon(
-              Provider.of<AppStateNotifier>(context, listen: false).isDarkMode
-                  ? Icons.wb_sunny_outlined
-                  : Icons.sunny,
-            ),
-            Switch(
-                value: Provider.of<AppStateNotifier>(context, listen: false)
-                    .isDarkMode,
-                activeColor: Colors.white,
-                onChanged: (newValue) {
-                  Provider.of<AppStateNotifier>(context, listen: false)
-                      .updateTheme(newValue);
-                }),
-          ],
-        ),
+      title: Row(
+        children: [
+          Icon(
+            Provider.of<AppStateNotifier>(context, listen: false).isDarkMode
+                ? Icons.wb_sunny_outlined
+                : Icons.sunny,
+          ),
+          Switch(
+              value: Provider.of<AppStateNotifier>(context, listen: false)
+                  .isDarkMode,
+              activeColor: Colors.white,
+              onChanged: (newValue) {
+                Provider.of<AppStateNotifier>(context, listen: false)
+                    .updateTheme(newValue);
+              }),
+        ],
       ),
       elevation: 0,
       actions: [

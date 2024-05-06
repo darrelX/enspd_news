@@ -1,45 +1,50 @@
-import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:enspd_news/auth/authentification.dart';
 import 'package:flutter/material.dart';
-import 'package:enspd_news/auth/authentification.dart';
-import 'package:enspd_news/services/firestore.dart';
-import 'package:enspd_news/view/home/home_page.dart';
-import 'package:enspd_news/widgets/snackbar_utils.dart';
 
 class MyButton extends StatelessWidget {
-  final GlobalKey<FormState> formField;
-  final TextEditingController passwordController;
-  final TextEditingController emailController;
-  final String title;
-  final Future<void> Function() ontap;
+  final GlobalKey<FormState>? formField;
+  final TextEditingController? passwordController;
+  final TextEditingController? emailController;
+  final Widget widget;
+  final double? large;
+  final Color? color;
+  final BoxBorder? border;
+  final void Function() ontap;
 
   const MyButton(
       {super.key,
-      required this.formField,
-      required this.passwordController,
-      required this.emailController,
-      required this.title,
-      required this.ontap});
+      this.formField,
+      this.passwordController,
+      this.emailController,
+      required this.widget,
+      this.color,
+      required this.ontap,
+      this.large,
+      this.border})
+      : assert(
+          formField == null &&
+              passwordController == null &&
+              emailController == null,
+          'If formField is null, passwordController and emailController must also be null.',
+        );
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
     return InkWell(
-      onTap: () async {
-        if (formField.currentState!.validate()) {
-          await ontap();
+      onTap: () {
+        if (formField == null || formField!.currentState!.validate()) {
+          return ontap();
         }
       },
       child: Container(
-          width: width - 50,
+          width: large,
           height: 50,
-          decoration: BoxDecoration(color: Colors.orange),
-          child: Center(
-              child: Text(
-            title,
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ))),
+          decoration: BoxDecoration(
+              color: color,
+              border: border ?? Border.all(color: Colors.blue),
+              borderRadius: BorderRadius.circular(20)),
+          child: Center(child: widget)),
     );
   }
 }

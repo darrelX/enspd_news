@@ -15,10 +15,12 @@ class _NaviationBarState extends State<NaviationBar> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     // bool _selectIndex = true;
     return Container(
       color: Colors.orange.withOpacity(0.7),
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      height: height * 0.08,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: GNav(
           // backgroundColor: Colors.orange.withOpacity(0.7),
           color: Colors.grey,
@@ -44,20 +46,20 @@ class _NaviationBarState extends State<NaviationBar> {
             GButton(
               border:
                   _currentIndex == 1 ? Border.all(color: Colors.orange) : null,
-              icon: Icons.person,
-              text: 'Person',
+              icon: Icons.message,
+              text: 'Message',
             ),
             GButton(
               border:
                   _currentIndex == 2 ? Border.all(color: Colors.orange) : null,
-              icon: Icons.favorite_border,
+              icon: Icons.book,
               text: 'favorites',
             ),
             GButton(
               border:
                   _currentIndex == 3 ? Border.all(color: Colors.orange) : null,
-              icon: Icons.book,
-              text: 'Librairies',
+              icon: Icons.person,
+              text: 'Person',
             ),
           ]),
     );

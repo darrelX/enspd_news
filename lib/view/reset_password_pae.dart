@@ -1,3 +1,4 @@
+import 'package:enspd_news/view/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:enspd_news/auth/authentification.dart';
 import 'package:enspd_news/widgets/my_button.dart';
@@ -60,7 +61,7 @@ class _ResetPassWordPageState extends State<ResetPassWordPage> {
                     ),
                     const SizedBox(height: 15),
                     MyTextField(
-                      prefix: const Icon(Icons.person),
+                      prefixIcon: const Icon(Icons.person),
                       controller: _emailController,
                       hintText: 'Email Address',
                       obscureText: false,
@@ -120,11 +121,22 @@ class _ResetPassWordPageState extends State<ResetPassWordPage> {
                       height: 60,
                     ),
                     MyButton(
-                      title: 'Submit',
+                      widget: const Text(
+                        "Sumit",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
                       passwordController: _passwordController,
                       emailController: _emailController,
                       formField: _formField,
-                      ontap: () => Auth.resetPassword(_emailController.text),
+                      ontap: () async {
+                        Auth.resetPassword(_emailController.text).then((_) =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const LoginScreen())));
+                      },
+                      color: Colors.blue.shade700,
                     ),
                   ],
                 ),

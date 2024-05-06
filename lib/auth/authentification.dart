@@ -51,7 +51,7 @@ class Auth {
     }
   }
 
-  String? firstNameAuth() {
+  static String? firstNameAuth() {
     return _auth.currentUser?.displayName?.split(' ')[0];
   }
 

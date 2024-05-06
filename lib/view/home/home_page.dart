@@ -2,7 +2,7 @@ import 'package:enspd_news/view/home/widgets/naviation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:enspd_news/auth/authentification.dart';
 import 'package:enspd_news/model/camera_manager.dart';
-import 'package:enspd_news/view/camera_page.dart';
+// import 'package:enspd_news/view/camera_page.dart';
 import 'package:enspd_news/view/home/main_piece.dart';
 import 'package:enspd_news/widgets/my_app_bar.dart';
 
@@ -16,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final auth = Auth();
-  late int _currentTabIndex = widget.currentTabIndex;
 
   @override
   void initState() {
@@ -38,11 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       // ignore: prefer_const_constructors
-      appBar: MyAppBar(
-        prefferedHeight: height * 0.07,
-      ),
+      // appBar: MyAppBar(
+      //   prefferedHeight: height * 0.07,
+      // ),
       resizeToAvoidBottomInset: false,
-      body: kTabPages[_currentTabIndex],
+      body: kTabPages[widget.currentTabIndex],
       bottomNavigationBar: const NaviationBar(),
     );
   }
